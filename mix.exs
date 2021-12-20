@@ -15,7 +15,7 @@ defmodule Exlivery.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger, :crypto]
     ]
   end
 
@@ -24,6 +24,7 @@ defmodule Exlivery.MixProject do
     [
       {:decimal, "~> 2.0"},
       {:ex_machina, "~> 2.5.0"},
+      {:elixir_uuid, "~> 1.2"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
