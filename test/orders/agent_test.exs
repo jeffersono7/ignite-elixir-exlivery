@@ -2,7 +2,6 @@ defmodule Exlivery.Orders.AgentTest do
   use ExUnit.Case, async: true
 
   alias Exlivery.Orders.Agent, as: OrderAgent
-  alias Exlivery.Orders.Order
 
   import Exlivery.Factory
 
