@@ -64,5 +64,15 @@ defmodule Exlivery.Orders.CreateOrUpdateTest do
 
       assert response == expected_response
     end
+
+    test "when there are no items, returns an error", %{user_cpf: cpf} do
+      params = %{user_cpf: cpf, items: []}
+
+      response = CreateOrUpdate.call(params)
+
+      expected_response = {:error, "Invalid items"}
+
+      assert response == expected_response
+    end
   end
 end
