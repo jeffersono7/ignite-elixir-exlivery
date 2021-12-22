@@ -30,21 +30,12 @@ defmodule Exlivery.Users.AgentTest do
     end
 
     test "when the user is found, returns the user", %{cpf: cpf} do
-      :user
-      |> build(cpf: cpf)
-      |> UserAgent.save()
+      user = build(:user, cpf: cpf)
+      UserAgent.save(user)
 
       response = UserAgent.get(cpf)
 
-      expected_response =
-        {:ok,
-         %User{
-           address: "Brasilia",
-           age: 25,
-           cpf: "78901237891",
-           email: "jefferson@teste.com",
-           name: "jefferson"
-         }}
+      expected_response = {:ok, user}
 
       assert response == expected_response
     end

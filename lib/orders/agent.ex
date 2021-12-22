@@ -15,7 +15,7 @@ defmodule Exlivery.Orders.Agent do
     {:ok, uuid}
   end
 
-  def get(cpf), do: Agent.get(__MODULE__, &get_order(&1, cpf))
+  def get(uuid), do: Agent.get(__MODULE__, &get_order(&1, uuid))
 
   defp get_order(state, uuid) do
     case Map.get(state, uuid) do
