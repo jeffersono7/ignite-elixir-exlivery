@@ -7,19 +7,27 @@ defmodule Exlivery.Users.AgentTest do
   import Exlivery.Factory
 
   describe "save/1" do
+    setup do
+      UserAgent.start_link(%{})
+
+      :ok
+    end
+
     test "saves the user" do
       user = build(:user)
-
-      UserAgent.start_link(%{})
 
       assert UserAgent.save(user) == :ok
     end
   end
 
   describe "get/1" do
-    test "when the user is found, returns the user" do
+    setup do
       UserAgent.start_link(%{})
 
+      :ok
+    end
+
+    test "when the user is found, returns the user" do
       :user
       |> build(cpf: "78901237891")
       |> UserAgent.save()
@@ -40,8 +48,6 @@ defmodule Exlivery.Users.AgentTest do
     end
 
     test "when the user is not found, returns an error" do
-      UserAgent.start_link(%{})
-
       response = UserAgent.get("000000000000")
 
       expected_response = {:error, "User not found"}
